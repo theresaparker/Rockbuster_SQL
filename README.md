@@ -40,5 +40,5 @@ Rockbuster customers are global!  The top revenue producing and largest customer
   # Additional Resources
   
   - Link to Tableau visualizations: https://public.tableau.com/views/RockbusterStealth_16553562253470/Top10Geography?:language=en-US&:display_count=n&:origin=viz_share_link
-  - Data dictionary which is located in folder **05 Sent to Client**.
-  - Powerpoint Presentation with final analysis located in folder **05 Sent to Client**. 
+  - Data dictionary which is located in folder **04 - Analysis & Presentation**.
+  - Powerpoint Presentation with final analysis located in folder **04 - Analysis & Presentation**. 
