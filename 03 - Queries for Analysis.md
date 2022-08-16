@@ -9,6 +9,7 @@
  8.  Revenue by genre
  9.  Revenue by rating
  10.  Global Revenue
+ 11.  Using CTE to find the average amount from the top 5 customers:
 
 ## **1. Descriptive Statistics**
 ##### -- Query for descriptive statistics on numerical columns in the fim table--
@@ -162,3 +163,28 @@
     GROUP BY Country	
     ORDER BY country_revenue desc	
 
+## **11. Query using common table expression (CTE), to find the average amount from the top 5 customers:**
+
+
+    WITH top_5_customers_average_CTE (customer_id, first_name, last_name, city, country, total_amount_paid) AS
+        (SELECT A.customer_id,
+                A. first_name,
+                A. last_name,
+                C. city,
+                D. country
+                SUM (E.amount) AS total_amount_paid
+        FROM Customer A
+        INNER JOIN Address B on A.address.id = B.address_id
+        INNER JOIN City C on B.city_id = C.city_id
+        INNER JOIN Country D on C.country_id = D.country_id
+        INNER JOIN payment E on A.customer_id = E.customer_id
+        WHERE C.city IN ('Aurora', Pingxiang', 'Sivas', 'Dhule(Dhulia)', 'Kurashiki', 'Xintai', 'Adoni', 'Celaya', 'Nezahualcyotl', 'Atlixco')
+        GROUP BY
+        A.Customer_id,
+        C.City,
+        D.Country
+        ORDER BY total_amount_paid desc
+        LIMIT 5
+    
+    SELECT ROUND (AVG(total_amount_paid),2)
+    FROM top_5_customers_average_CTE
